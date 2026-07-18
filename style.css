@@ -1,0 +1,206 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f6f6f6;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    padding:30px 15px;
+    height: 100vh;
+}
+
+.diary{
+    width:100%;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* Imagen */
+
+.cover{
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.cover img{
+    width:100%;
+    display:block;
+}
+
+.cover:hover{
+    transform:scale(1.02);
+}
+
+/* Texto oculto */
+
+.content{
+    margin-top:18px;
+    background:white;
+    border-radius:20px;
+    padding:22px;
+
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+
+    transition:
+        max-height 1s ease-in-out,
+        opacity .8s ease,
+        padding .6s ease;
+
+    padding-top:0;
+    padding-bottom:0;
+}
+
+/* Estado abierto */
+
+.diary.open .content{
+
+    max-height:700px;
+
+    opacity:1;
+
+    padding:22px;
+}
+
+.top{
+    margin-bottom:18px;
+}
+
+.top h2{
+    font-size:22px;
+    margin-bottom:4px;
+}
+
+.top span{
+    color:#666;
+}
+
+.content p{
+    line-height:1.7;
+    margin-bottom:16px;
+    color:#333;
+    text-align: justify;
+}
+
+.next{
+    border:none;
+    background:none;
+    color:#888;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.hint{
+    max-height:25px;
+    font-size: 0.8rem;
+    opacity:1;
+    overflow:hidden;
+    transition:
+        opacity .3s ease,
+        max-height .3s ease,
+        margin .3s ease;
+    color: #a09d9d;
+    margin-top: 20px;
+}
+
+.diary.open .hint{
+    opacity:0;
+    max-height:0;
+    margin:0;
+}
+
+.pages{
+    width:100%;
+    position:relative;
+}
+
+.page{
+
+    display:none;
+
+    animation:fade .5s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+.buttons{
+
+    display:flex;
+    justify-content:space-between;
+}
+.next{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+}
+
+.next,
+.back{
+
+    border:none;
+    background:none;
+
+    cursor:pointer;
+
+    color:#7b7b7b;
+
+    font-size:16px;
+
+    margin-top:20px;
+
+    transition:.3s;
+}
+
+.next:hover,
+.back:hover{
+
+    color:black;
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+        transform:translateX(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateX(0);
+
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:480px){
+
+    body{
+        padding:15px;
+    }
+
+    .top h2{
+        font-size:18px;
+    }
+
+    .content{
+        font-size:15px;
+    }
+
+}
